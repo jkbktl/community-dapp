@@ -157,7 +157,7 @@ contract VotingContract is Ownable2Step {
         uint256[] memory returnVotingRooms = new uint256[](votingRooms.length);
         uint256 count = 0;
         for (uint256 i = 0; i < votingRooms.length; i++) {
-            if (!votingRooms[i].finalized) {
+            if (!votingRooms[i].finalized || !votingRooms[i].evaluated) {
                 returnVotingRooms[count] = votingRooms[i].roomNumber;
                 count++;
             }

@@ -7,9 +7,10 @@ describe('voting', () => {
   describe('fromRoom', () => {
     it('success', () => {
       const votingRoom: VotingRoom = {
-        endAt: BigNumber.from(10000200),
-        startBlock: BigNumber.from(10000000),
         startAt: BigNumber.from(10000050),
+        startBlock: BigNumber.from(10000000),
+        endAt: BigNumber.from(10000200),
+        endBlock: BigNumber.from(10000300),
         verificationStartAt: BigNumber.from(10000100),
         voteType: 0,
         finalized: false,
@@ -17,6 +18,8 @@ describe('voting', () => {
         totalVotesFor: BigNumber.from(100),
         totalVotesAgainst: BigNumber.from(100),
         roomNumber: 1,
+        evaluated: false,
+        evaluatingPos: 1,
       }
       const room = voting.fromRoom(votingRoom)
 
@@ -26,9 +29,10 @@ describe('voting', () => {
     })
     it('different type', () => {
       const votingRoom: VotingRoom = {
-        endAt: BigNumber.from(10000200),
-        startBlock: BigNumber.from(10000000),
         startAt: BigNumber.from(10000050),
+        startBlock: BigNumber.from(10000000),
+        endAt: BigNumber.from(10000200),
+        endBlock: BigNumber.from(10000300),
         verificationStartAt: BigNumber.from(10000100),
         voteType: 1,
         finalized: false,
@@ -36,6 +40,8 @@ describe('voting', () => {
         totalVotesFor: BigNumber.from(1000),
         totalVotesAgainst: BigNumber.from(100),
         roomNumber: 1,
+        evaluated: false,
+        evaluatingPos: 1,
       }
       const room = voting.fromRoom(votingRoom)
 
